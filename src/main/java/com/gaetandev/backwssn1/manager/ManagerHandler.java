@@ -27,7 +27,8 @@ public class ManagerHandler {
     private final SavingManager savingManager;
     private final MenuManager menuManager;
 
-    public ManagerHandler(MainSpring mainSpring) {
+
+    public ManagerHandler(final MainSpring mainSpring) {
         this.mainSpring = mainSpring;
         this.threadManager = new ThreadManager(this);
         this.savingManager = new SavingManager(this);
@@ -35,18 +36,18 @@ public class ManagerHandler {
     }
 
     public ThreadManager getThreadManager() {
-        return threadManager;
+        return this.threadManager;
     }
 
     public SavingManager getSavingManager() {
-        return savingManager;
+        return this.savingManager;
     }
 
     public MenuManager getMenuManager() {
-        return menuManager;
+        return this.menuManager;
     }
 
     public MainSpring getMainSpring() {
-        return mainSpring;
+        return this.mainSpring;
     }
 }

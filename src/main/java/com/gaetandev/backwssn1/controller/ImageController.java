@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 class ImageController {
 
     @GetMapping(value = "/")
-    public String index(@RequestParam("img") String img) {
+    public String index(@RequestParam("img") final String img) {
         return "forward:/public/images/img";
     }
 }

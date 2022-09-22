@@ -22,7 +22,6 @@ import com.gaetandev.backwssn1.manager.ManagerHandler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.io.FileInputStream;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -30,7 +29,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class MainSpring {
     private static MainSpring instance;
     private Map<String, UserData> users = new ConcurrentHashMap<>();
-    private Map<String, MenuData> menus = new ConcurrentHashMap<>();
+    private final Map<String, MenuData> menus = new ConcurrentHashMap<>();
     private final ManagerHandler managerHandler;
 
     public MainSpring() {
@@ -38,24 +37,24 @@ public class MainSpring {
         this.managerHandler = new ManagerHandler(this);
     }
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         SpringApplication.run(MainSpring.class, args);
     }
 
     public Map<String, UserData> getUsers() {
-        return users;
+        return this.users;
     }
 
-    public void setUsers(Map<String, UserData> users) {
+    public void setUsers(final Map<String, UserData> users) {
         this.users = users;
     }
 
     public Map<String, MenuData> getMenus() {
-        return menus;
+        return this.menus;
     }
 
     public ManagerHandler getManagerHandler() {
-        return managerHandler;
+        return this.managerHandler;
     }
 
     public static MainSpring getInstance() {

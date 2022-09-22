@@ -27,7 +27,7 @@ public final class ThreadManager extends Manager {
     private final ExecutorService threadPool;
     private final ScheduledExecutorService threadScheduledPool;
 
-    public ThreadManager(ManagerHandler handler) {
+    public ThreadManager(final ManagerHandler handler) {
         super(handler);
 
         this.threadPool =

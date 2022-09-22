@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
 
     @GetMapping(value = "login", produces = MediaType.APPLICATION_JSON_VALUE)
-    public boolean login(@RequestParam("user") String user, @RequestParam("pass") String pass) {
+    public boolean login(@RequestParam("user") final String user, @RequestParam("pass") final String pass) {
         boolean valid = false;
 
         final UserData userData = MainSpring.getInstance().getUsers().get(user);

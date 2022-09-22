@@ -27,7 +27,7 @@ import java.util.Map;
 public final class SavingManager extends Manager {
     private final MainSpring mainSpring;
 
-    public SavingManager(ManagerHandler handler) {
+    public SavingManager(final ManagerHandler handler) {
         super(handler);
 
         this.mainSpring = handler.getMainSpring();
@@ -35,31 +35,31 @@ public final class SavingManager extends Manager {
     }
 
     public void saveAll() {
-        handler.getThreadManager().getThreadPool().execute(this::saveUsers);
+        this.handler.getThreadManager().getThreadPool().execute(this::saveUsers);
     }
 
     private void saveUsers() {
         try {
-            FileOutputStream fileOut =
+            final FileOutputStream fileOut =
                     new FileOutputStream("./users.foxfood");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            final ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
             out.writeObject(this.mainSpring.getUsers());
             out.close();
             fileOut.close();
-        } catch (IOException e) {
+        } catch (final IOException e) {
             e.printStackTrace();
         }
     }
 
     private void loadUsers() {
         try {
-            FileInputStream fileIn = new FileInputStream("./users.foxfood");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
+            final FileInputStream fileIn = new FileInputStream("./users.foxfood");
+            final ObjectInputStream in = new ObjectInputStream(fileIn);
             this.mainSpring.setUsers((Map<String, UserData>) in.readObject());
             in.close();
             fileIn.close();
-        } catch (Exception ignored) {
+        } catch (final Exception ignored) {
 
         }
     }

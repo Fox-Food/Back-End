@@ -19,7 +19,6 @@ package com.gaetandev.backwssn1.data;
 import java.io.Serializable;
 
 public final class MenuData implements Serializable {
-
     private final String id, day, name, image;
 
     public MenuData(final String id, final String day, final String name, final String image) {
@@ -30,18 +29,18 @@ public final class MenuData implements Serializable {
     }
 
     public String getId() {
-        return id;
+        return this.id;
     }
 
     public String getDay() {
-        return day;
+        return this.day;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public String getImage() {
-        return image;
+        return this.image;
     }
 }

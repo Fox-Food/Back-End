@@ -33,50 +33,50 @@ public final class UserData implements Serializable {
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     public String getFirstName() {
-        return firstName;
+        return this.firstName;
     }
 
     public String getSecondName() {
-        return secondName;
+        return this.secondName;
     }
 
     public String getAddress() {
-        return address;
+        return this.address;
     }
 
     public List<MenuData> getLikedMenu() {
-        return likedMenu;
+        return this.likedMenu;
     }
 
     public List<MenuData> getFavoriteMenu() {
-        return favoriteMenu;
+        return this.favoriteMenu;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(final String email) {
         this.email = email;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.password = password;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(final String firstName) {
         this.firstName = firstName;
     }
 
-    public void setSecondName(String secondName) {
+    public void setSecondName(final String secondName) {
         this.secondName = secondName;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(final String address) {
         this.address = address;
     }
 }
