@@ -19,13 +19,13 @@ package com.gaetandev.backwssn1.utils;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class HashUtils {
-    private static int logRound = 11;
+    private static final int logRound = 11;
 
-    public static String hashString(String stringToHash) {
+    public static String hashString(final String stringToHash) {
         return BCrypt.hashpw(stringToHash, BCrypt.gensalt(logRound));
     }
 
-    public static boolean verifyHash(String password, String hash) {
+    public static boolean verifyHash(final String password, final String hash) {
         return BCrypt.checkpw(password, hash);
     }
 }

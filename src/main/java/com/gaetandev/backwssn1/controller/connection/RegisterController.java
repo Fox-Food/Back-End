@@ -31,19 +31,19 @@ import java.util.Map;
 @RestController
 public class RegisterController {
     private final MainSpring mainSpring = MainSpring.getInstance();
-    private final Map<String, UserData> users = mainSpring.getUsers();
+    private final Map<String, UserData> users = this.mainSpring.getUsers();
 
     @GetMapping(value = "register", produces = MediaType.APPLICATION_JSON_VALUE)
-    public boolean register(@RequestParam("user") String user, @RequestParam("pass") String pass,
-                         @RequestParam("confirmpass") String confirmPass) {
+    public boolean register(@RequestParam("user") final String user, @RequestParam("pass") final String pass,
+                            @RequestParam("confirmpass") final String confirmPass) {
         boolean valid = false;
 
-        UserData userData = users.get(user);
+        UserData userData = this.users.get(user);
 
         if (user != null && pass != null && confirmPass != null) {
             if (userData == null && pass.equals(confirmPass)) {
                 userData = new UserData(user, HashUtils.hashString(pass));
-                users.put(user, userData);
+                this.users.put(user, userData);
                 valid = true;
 
                 this.mainSpring.getManagerHandler().getSavingManager().saveAll();

@@ -19,26 +19,23 @@ package com.gaetandev.backwssn1.manager.managers;
 import com.gaetandev.backwssn1.data.MenuData;
 import com.gaetandev.backwssn1.manager.Manager;
 import com.gaetandev.backwssn1.manager.ManagerHandler;
-import com.gaetandev.backwssn1.utils.RandomUtils;
 
 public final class MenuManager extends Manager {
-    public MenuManager(ManagerHandler handler) {
+    public MenuManager(final ManagerHandler handler) {
         super(handler);
 
-        this.loadMenu();
+        this.addMenu(11245, "First Day", "Vegetable Wok", "wok-vege.jpg");
+        this.addMenu(11246, "Second Day", "Pasta Bolognese", "pastebolo.jpg");
+        this.addMenu(11247, "Third Day", "Turkye Rice", "rizdine.webp");
+        this.addMenu(11248, "Fourth Day", "Mushroom Omelet", "omelette.webp");
+        this.addMenu(11249, "Fifth Day", "Pizza", "pizza.webp");
     }
 
-    private void loadMenu() {
-        int id = 11245;
-        MenuData menuData =
-                new MenuData(String.valueOf(id), "First Day", "Wok Végé", "https://api-ws-sn1.gaetandev.fr/images/wok-vege.jpg");
-        handler.getMainSpring().getMenus().put("Wok Végé", menuData);
+    private void addMenu(final int id, final String day, final String name, final String image) {
+        final String link = "https://api-ws-sn1.gaetandev.fr/images/";
 
-        id++;
-
-        MenuData menuData2 =
-                new MenuData(String.valueOf(id), "Second Day", "Pâtes bolognaises", "https://api-ws-sn1.gaetandev.fr/images/pastebolo.jpg");
-        handler.getMainSpring().getMenus().put("Pâtes bolognaises", menuData2);
+        this.handler.getMainSpring().getMenus().put(name,
+                new MenuData(String.valueOf(id), day, name, link + image));
 
     }
 }

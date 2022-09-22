@@ -31,11 +31,11 @@ import java.util.Map;
 @RestController
 public class LikedMenuGetController {
     private final MainSpring mainSpring = MainSpring.getInstance();
-    private final Map<String, UserData> users = mainSpring.getUsers();
+    private final Map<String, UserData> users = this.mainSpring.getUsers();
 
     @GetMapping(value = "liked-user-menu", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Object likedmenu(@RequestParam("user") String user, @RequestParam("pass") String password) {
-        final UserData userData = users.get(user);
+    public Object likedmenu(@RequestParam("user") final String user, @RequestParam("pass") final String password) {
+        final UserData userData = this.users.get(user);
 
         if (userData != null && HashUtils.verifyHash(password, userData.getPassword())) {
             return userData.getLikedMenu();

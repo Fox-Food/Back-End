@@ -32,18 +32,18 @@ import java.util.Map;
 @RestController
 public class LikedMenuSetController {
     private final MainSpring mainSpring = MainSpring.getInstance();
-    private final Map<String, UserData> users = mainSpring.getUsers();
+    private final Map<String, UserData> users = this.mainSpring.getUsers();
 
     @GetMapping(value = "liked-menu", produces = MediaType.APPLICATION_JSON_VALUE)
-    public boolean likedmenu(@RequestParam("user") String user, @RequestParam("menu") String menu,
-                         @RequestParam("pass") String password) {
+    public boolean likedmenu(@RequestParam("user") final String user, @RequestParam("menu") final String menu,
+                             @RequestParam("pass") final String password) {
         boolean valid = false;
-        final UserData userData = users.get(user);
+        final UserData userData = this.users.get(user);
 
         if (userData != null && HashUtils.verifyHash(password, userData.getPassword())) {
-            MenuData menuData = mainSpring.getMenus().get(menu);
+            final MenuData menuData = this.mainSpring.getMenus().get(menu);
             if (!userData.getLikedMenu().contains(menuData)) {
-                userData.getLikedMenu().add(mainSpring.getMenus().get(menu));
+                userData.getLikedMenu().add(this.mainSpring.getMenus().get(menu));
                 valid = true;
 
                 this.mainSpring.getManagerHandler().getSavingManager().saveAll();
